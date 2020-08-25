@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Ventura - Dashboard</title>
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png'%}">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+	
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css'%}">
+	
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css'%}">
+	
+	<link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css'%}">
+	
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+	
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+			
+			<!-- Header -->
+			<div class="header">
+				
+				<!-- Logo -->
+				<div class="header-left">
+					<a href="/home" class="logo">
+						<img src="{% static 'assets/img/logo.png'%}" alt="Logo">
+					</a>
+					<a href="/home" class="logo logo-small">
+						<img src="{% static 'assets/img/logo-small.png'%}" alt="Logo" width="30" height="30">
+					</a>
+				</div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				{% include 'header.html' %}
+				<!-- /Header Right Menu -->
+				
+			</div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+			{% include 'sidebar.html' %}
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+			<div class="page-wrapper">
+				
+				<div class="content container-fluid">
+					
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Welcome {{user.fullname}}!</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item active">Dashboard</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+
+					<div class="row">
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon bg-primary">
+											<i class="fe fe-users"></i>
+										</span>
+										<div class="dash-count">
+											<i class="fa fa-arrow-up text-success"></i> 17%
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										<h3>168</h3>
+										<h6 class="text-muted">Customers</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-primary w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon bg-success">
+											<i class="fe fe-money"></i>
+										</span>
+										<div class="dash-count">
+											<i class="fa fa-arrow-down text-danger"></i> 12%
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										<h3>21587</h3>
+										<h6 class="text-muted">Products</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-success w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon bg-danger">
+											<i class="fe fe-credit-card"></i>
+										</span>
+										<div class="dash-count">
+											<i class="fa fa-arrow-down text-danger"></i> 12%
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										<h3>$56485</h3>
+										<h6 class="text-muted">Sales</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-danger w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="dash-widget-header">
+										<span class="dash-widget-icon bg-warning">
+											<i class="fe fe-folder"></i>
+										</span>
+										<div class="dash-count">
+											<i class="fa fa-arrow-up text-success"></i> 17%
+										</div>
+									</div>
+									<div class="dash-widget-info">
+										<h3>$62523</h3>
+										<h6 class="text-muted">Revenue</h6>
+										<div class="progress progress-sm">
+											<div class="progress-bar bg-warning w-50"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 col-lg-6">
+							
+							<!-- Sales Chart -->
+							<div class="card card-chart">
+								<div class="card-header">
+									<h4 class="card-title">Sales Overview</h4>
+								</div>
+								<div class="card-body">
+									<div id="morrisArea"></div>
+								</div>
+							</div>
+							<!-- /Sales Chart -->
+							
+						</div>
+						<div class="col-md-12 col-lg-6">
+							
+							<!-- Invoice Chart -->
+							<div class="card card-chart">
+								<div class="card-header">
+									<h4 class="card-title">Order Status</h4>
+								</div>
+								<div class="card-body">
+									<div id="morrisLine"></div>
+								</div>
+							</div>
+							<!-- /Invoice Chart -->
+							
+						</div>	
+					</div>
+					
+					
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+			
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.2.1.min.js'%}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'assets/js/popper.min.js'%}"></script>
+		<script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+		
+		<!-- Slimscroll JS -->
+		<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js'%}"></script>
+		
+		<script src="{% static 'assets/plugins/raphael/raphael.min.js'%}"></script>    
+		<script src="{% static 'assets/plugins/morris/morris.min.js'%}"></script>  
+		<script src="{% static 'assets/js/chart.morris.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script  src="{% static 'assets/js/script.js'%}"></script>
+		
+	</body>
+	</html>

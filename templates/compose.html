@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Ventura - Compose</title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png'%}">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css'%}">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css'%}">
+		
+		<!-- Summernote CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/summernote/dist/summernote-bs4.css'%}">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+		
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/home" class="logo">
+						<img src="{% static 'assets/img/logo.png'%}" alt="Logo">
+					</a>
+					<a href="/home" class="logo logo-small">
+						<img src="{% static 'assets/img/logo-small.png'%}" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+				
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				{% include 'header.html' %}
+				<!-- /Header Right Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            {% include 'sidebar.html' %}
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col">
+								<h3 class="page-title">Compose</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Compose</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-lg-3 col-md-4">
+							
+						</div>
+						<div class="col-lg-9 col-md-8">
+							<div class="card">
+								<div class="card-body">
+									<form action="/compose" method="POST">
+										{% csrf_token %}
+										<div class="form-group">
+											<input type="text" name="to_email" placeholder="To" class="form-control">
+										</div>
+										<div class="form-group">
+											<input type="text" name="subject" placeholder="Subject" class="form-control">
+										</div>
+										<div class="form-group">
+											<textarea rows="4" name="message" class="form-control summernote" placeholder="Enter your message here"></textarea>
+										</div>
+										<div class="form-group mb-0">
+											<div class="text-center">
+												<button class="btn btn-primary"><i class="fa fa-send m-r-5"></i> <span>Send</span></button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>			
+			</div>
+			<!-- /Main Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="{% static 'assets/js/jquery-3.2.1.min.js'%}"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js'%}"></script>
+		
+		<!-- Summernote JS -->
+		<script src="{% static 'assets/plugins/summernote/dist/summernote-bs4.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script  src="{% static 'assets/js/script.js'%}"></script>
+		
+    </body>
+</html>

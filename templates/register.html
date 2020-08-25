@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Ventura - Register</title>
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png'%}">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css'%}">
+	
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css'%}">
+	
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+	
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		
+		<!-- Main Wrapper -->
+		<div class="main-wrapper login-body">
+			<div class="login-wrapper">
+				<div class="container">
+					<div class="loginbox">
+						<div class="login-left">
+							<img class="img-fluid" src="{% static 'assets/img/logo.png'%}" alt="Logo">
+						</div>
+						<div class="login-right">
+							<div class="login-right-wrap">
+								<h1>Register</h1>
+								<p class="account-subtitle">Access to our dashboard</p>
+								{% for message in messages %}
+								{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+								<div class="alert alert-warning alert-dismissible fade show">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									{{message}}
+								</div>
+								{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+								<div class="alert alert-success alert-dismissible fade show">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									{{message}}
+								</div>
+								{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+								<div class="alert alert-primary alert-dismissible fade show">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									{{message}}
+								</div>
+								{% endif %}
+								{% endfor %}
+								<!-- Form -->
+								<form action="/register" method="POST">
+									{% csrf_token %}
+									<div class="form-group">
+										<input class="form-control" name="fullname" type="text" placeholder="Full Name">
+									</div>
+									<div class="form-group">
+										<input class="form-control" name="email" type="email" placeholder="Email">
+									</div>
+									<div class="form-group">
+										<input class="form-control" name="password1" type="password" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<input class="form-control" name="password2" type="password" placeholder="Confirm Password">
+									</div>
+									<div class="form-group mb-0">
+										<button class="btn btn-primary btn-block" type="submit">Register</button>
+									</div>
+								</form>
+								<!-- /Form -->
+								
+								<div class="login-or">
+									<span class="or-line"></span>
+									<span class="span-or">or</span>
+								</div>
+								
+								<!-- Social Login -->
+								
+								<!-- /Social Login -->
+								
+								<div class="text-center dont-have">Already have an account? <a href="/">Login</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.2.1.min.js'%}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'assets/js/popper.min.js'%}"></script>
+		<script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js'%}"></script>
+		
+	</body>
+	</html>
